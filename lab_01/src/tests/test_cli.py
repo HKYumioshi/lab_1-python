@@ -1,5 +1,6 @@
 import subprocess
 
+
 def test_cli_calc():
 
     result = subprocess.run(

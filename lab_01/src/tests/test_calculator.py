@@ -1,6 +1,9 @@
 import pytest
 
-from toolkit.calculator import calculate, rpn_conversion, tokenize, validate
+from toolkit.calculator import calculate
+from toolkit.calculator import rpn_conversion
+from toolkit.calculator import tokenize
+from toolkit.calculator import validate
 from toolkit.errors import CalculatorError
 
 

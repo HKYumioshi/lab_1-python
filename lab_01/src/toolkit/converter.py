@@ -1,5 +1,6 @@
 from toolkit.errors import ConverterError
 
+
 def convert(value, quantity_from, quantity_to):
     allowed_quantities = ['mm', 'cm', 'm', 'km', 'g', 'kg', 'c', 'f', 'k']
 
@@ -25,8 +26,7 @@ def convert(value, quantity_from, quantity_to):
 
     length_or_weight = None
 
-    for key in quantities:
-        el = quantities[key]
+    for key, el in quantities.items():
         if ((quantity_from in el) and (quantity_to not in el)) or ((quantity_from not in el) and (quantity_to in el)):
             raise ConverterError("Can't convert value from one quantity to another")
         

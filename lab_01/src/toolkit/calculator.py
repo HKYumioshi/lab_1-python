@@ -1,5 +1,6 @@
 from toolkit.errors import CalculatorError
 
+
 def tokenize(expression: str) -> list: 
     """
     Преобразование строки в массив чисел, скобок и операторов
@@ -12,7 +13,7 @@ def tokenize(expression: str) -> list:
     if not expression:
         raise CalculatorError("Empty expression")
 
-    tokens = list()
+    tokens = []
     i = 0
     n = len(expression)
 
@@ -39,7 +40,7 @@ def tokenize(expression: str) -> list:
             continue
 
         elif char.isdigit() or char == '.':
-            token = str()
+            token = ""
             while i < n - 1 and (expression[i + 1].isdigit() or expression[i + 1] == '.'):
                 token += expression[i]
                 i += 1
@@ -123,11 +124,7 @@ def validate(tokens: list) -> list:
 
         is_unary = False
         if token in ('+', '-'):
-            if not processed_tokens:
-                is_unary = True
-            elif processed_tokens[-1] == '(':
-                is_unary = True
-            elif processed_tokens[-1] in binary_ops:
+            if not processed_tokens or processed_tokens[-1] == '(' or processed_tokens[-1] in binary_ops:
                 is_unary = True
 
         if is_unary:
